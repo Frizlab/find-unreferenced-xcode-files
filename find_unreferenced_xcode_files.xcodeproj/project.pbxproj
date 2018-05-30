@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B35CC3420BF32A1007FE4EA /* stdstreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B35CC3320BF32A1007FE4EA /* stdstreams.swift */; };
 		7BF0BB7920BE9070000C5EBB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0BB7820BE9070000C5EBB /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B35CC3320BF32A1007FE4EA /* stdstreams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stdstreams.swift; sourceTree = "<group>"; };
 		7BF0BB7520BE9070000C5EBB /* find_unreferenced_xcode_files */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = find_unreferenced_xcode_files; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF0BB7820BE9070000C5EBB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +59,7 @@
 		7BF0BB7720BE9070000C5EBB /* find_unreferenced_xcode_files */ = {
 			isa = PBXGroup;
 			children = (
+				7B35CC3320BF32A1007FE4EA /* stdstreams.swift */,
 				7BF0BB7820BE9070000C5EBB /* main.swift */,
 			);
 			path = find_unreferenced_xcode_files;
@@ -90,7 +93,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = "François Lamboley";
+				ORGANIZATIONNAME = Frizlab;
 				TargetAttributes = {
 					7BF0BB7420BE9070000C5EBB = {
 						CreatedOnToolsVersion = 9.4;
@@ -120,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BF0BB7920BE9070000C5EBB /* main.swift in Sources */,
+				7B35CC3420BF32A1007FE4EA /* stdstreams.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
