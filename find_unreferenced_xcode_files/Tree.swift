@@ -16,9 +16,9 @@ class XcodeNode {
 		guard let object = pbxprojObjects[reference] as? [String: Any] else {return nil}
 		
 		switch object["isa"] as? String {
-		case "PBXGroup":         return Group(pbxprojObject: object, pbxprojObjects: pbxprojObjects)
-		case "PBXFileReference": return FileReference(pbxprojObject: object, pbxprojObjects: pbxprojObjects)
-		default:                 return nil
+		case "PBXGroup", "PBXVariantGroup": return Group(pbxprojObject: object, pbxprojObjects: pbxprojObjects)
+		case "PBXFileReference":            return FileReference(pbxprojObject: object, pbxprojObjects: pbxprojObjects)
+		default:                            return nil
 		}
 	}
 	
@@ -34,7 +34,7 @@ class Group : XcodeNode {
 	private(set) var children = [XcodeNode]()
 	
 	init?(pbxprojObject object: [String: Any], pbxprojObjects: [String: Any]) {
-		guard object["isa"] as? String == "PBXGroup" else {return nil}
+		guard let isa = object["isa"] as? String, (isa == "PBXGroup" || isa == "PBXVariantGroup") else {return nil}
 		
 		guard let p = object["path"] as? String? else {return nil}
 		guard let c = object["children"] as? [String] else {return nil}
