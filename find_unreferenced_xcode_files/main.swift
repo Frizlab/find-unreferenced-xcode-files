@@ -50,7 +50,9 @@ do {
 		throw NSError(domain: "", code: 1, userInfo: [NSLocalizedDescriptionKey: "Unexpected file format"])
 	}
 	
-	let filepathsSet = Set(filepathsArray)
+	let fileURLsSet = Set(filepathsArray.map{ path -> URL in
+		return URL(fileURLWithPath: path).absoluteURL
+	})
 	
 	/* I hate this (absolute path to /dev/stdin), but SimpleStream does not support FileHandle (yet) */
 	let inputStream = InputStream(fileAtPath: "/dev/stdin")!
@@ -59,7 +61,7 @@ do {
 	while let e = try? simpleStream.readData(upToDelimiters: [expectsNull ? Data([0]) : Data("\n".utf8)], matchingMode: .anyMatchWins, includeDelimiter: false, alwaysCopyBytes: false) {
 		_ = try? simpleStream.readData(size: 1, alwaysCopyBytes: false) /* Read the delimiter */
 		guard let p = String(data: e, encoding: .utf8) else {continue}
-		if !filepathsSet.contains(p) {print(p)}
+		if !fileURLsSet.contains(URL(fileURLWithPath: p).absoluteURL) {print(p)}
 	}
 } catch let error as CLIError {
 	if let msg = error.message {print("error: \(msg)", to: &stderrStream)}
