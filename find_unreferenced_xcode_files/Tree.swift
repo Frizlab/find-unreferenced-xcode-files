@@ -54,6 +54,7 @@ class Group : XcodeNode {
 class FileReference : XcodeNode {
 	
 	private(set) var relativePath: String
+    private(set) var sourceTree: String?
 	
 	init?(pbxprojObject object: [String: Any], pbxprojObjects: [String: Any]) {
 		guard object["isa"] as? String == "PBXFileReference" else {return nil}
@@ -65,7 +66,11 @@ class FileReference : XcodeNode {
 	}
 	
 	override func getFilePaths(prefix: String) -> [String] {
-		return [(prefix as NSString).appendingPathComponent(relativePath)]
+        if sourceTree == "SOURCE_ROOT" {
+            return [relativePath]
+        }else {
+            return [(prefix as NSString).appendingPathComponent(relativePath)]
+        }
 	}
 	
 }
