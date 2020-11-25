@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:find_unreferenced_xcode_files.xcodeproj">
+      location = "self:find-unreferenced-xcode-files.xcodeproj">
    </FileRef>
 </Workspace>

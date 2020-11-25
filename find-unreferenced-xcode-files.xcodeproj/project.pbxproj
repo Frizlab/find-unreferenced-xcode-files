@@ -37,7 +37,7 @@
 		7B35CC3B20BF4F74007FE4EA /* SimpleInputStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleInputStream.swift; sourceTree = "<group>"; };
 		7B35CC3C20BF4F74007FE4EA /* SimpleStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleStream.swift; sourceTree = "<group>"; };
 		7B35CC3D20BF4F74007FE4EA /* SimpleStreamError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleStreamError.swift; sourceTree = "<group>"; };
-		7BF0BB7520BE9070000C5EBB /* find_unreferenced_xcode_files */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = find_unreferenced_xcode_files; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BF0BB7520BE9070000C5EBB /* find-unreferenced-xcode-files */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "find-unreferenced-xcode-files"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF0BB7820BE9070000C5EBB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,7 +68,7 @@
 		7BF0BB6C20BE9070000C5EBB = {
 			isa = PBXGroup;
 			children = (
-				7BF0BB7720BE9070000C5EBB /* find_unreferenced_xcode_files */,
+				7BF0BB7720BE9070000C5EBB /* find-unreferenced-xcode-files */,
 				7BF0BB7620BE9070000C5EBB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,12 +76,12 @@
 		7BF0BB7620BE9070000C5EBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7BF0BB7520BE9070000C5EBB /* find_unreferenced_xcode_files */,
+				7BF0BB7520BE9070000C5EBB /* find-unreferenced-xcode-files */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7BF0BB7720BE9070000C5EBB /* find_unreferenced_xcode_files */ = {
+		7BF0BB7720BE9070000C5EBB /* find-unreferenced-xcode-files */ = {
 			isa = PBXGroup;
 			children = (
 				7B35CC3320BF32A1007FE4EA /* stdstreams.swift */,
@@ -89,15 +89,15 @@
 				7B35CC3620BF3E88007FE4EA /* Tree.swift */,
 				7B35CC3820BF4F74007FE4EA /* SimpleStream */,
 			);
-			path = find_unreferenced_xcode_files;
+			path = "find-unreferenced-xcode-files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7BF0BB7420BE9070000C5EBB /* find_unreferenced_xcode_files */ = {
+		7BF0BB7420BE9070000C5EBB /* find-unreferenced-xcode-files */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7BF0BB7C20BE9070000C5EBB /* Build configuration list for PBXNativeTarget "find_unreferenced_xcode_files" */;
+			buildConfigurationList = 7BF0BB7C20BE9070000C5EBB /* Build configuration list for PBXNativeTarget "find-unreferenced-xcode-files" */;
 			buildPhases = (
 				7BF0BB7120BE9070000C5EBB /* Sources */,
 				7BF0BB7220BE9070000C5EBB /* Frameworks */,
@@ -107,9 +107,9 @@
 			);
 			dependencies = (
 			);
-			name = find_unreferenced_xcode_files;
+			name = "find-unreferenced-xcode-files";
 			productName = find_unreferenced_xcode_files;
-			productReference = 7BF0BB7520BE9070000C5EBB /* find_unreferenced_xcode_files */;
+			productReference = 7BF0BB7520BE9070000C5EBB /* find-unreferenced-xcode-files */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -119,28 +119,29 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = Frizlab;
 				TargetAttributes = {
 					7BF0BB7420BE9070000C5EBB = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1220;
 					};
 				};
 			};
-			buildConfigurationList = 7BF0BB7020BE9070000C5EBB /* Build configuration list for PBXProject "find_unreferenced_xcode_files" */;
+			buildConfigurationList = 7BF0BB7020BE9070000C5EBB /* Build configuration list for PBXProject "find-unreferenced-xcode-files" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 7BF0BB6C20BE9070000C5EBB;
 			productRefGroup = 7BF0BB7620BE9070000C5EBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7BF0BB7420BE9070000C5EBB /* find_unreferenced_xcode_files */,
+				7BF0BB7420BE9070000C5EBB /* find-unreferenced-xcode-files */,
 			);
 		};
 /* End PBXProject section */
@@ -190,6 +191,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -252,6 +254,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -284,25 +287,27 @@
 		7BF0BB7D20BE9070000C5EBB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		7BF0BB7E20BE9070000C5EBB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7BF0BB7020BE9070000C5EBB /* Build configuration list for PBXProject "find_unreferenced_xcode_files" */ = {
+		7BF0BB7020BE9070000C5EBB /* Build configuration list for PBXProject "find-unreferenced-xcode-files" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7BF0BB7A20BE9070000C5EBB /* Debug */,
@@ -311,7 +316,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7BF0BB7C20BE9070000C5EBB /* Build configuration list for PBXNativeTarget "find_unreferenced_xcode_files" */ = {
+		7BF0BB7C20BE9070000C5EBB /* Build configuration list for PBXNativeTarget "find-unreferenced-xcode-files" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7BF0BB7D20BE9070000C5EBB /* Debug */,
