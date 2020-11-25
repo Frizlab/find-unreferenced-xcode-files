@@ -1,3 +1,0 @@
-[submodule "Dependencies/SimpleStream"]
-	path = Dependencies/SimpleStream
-	url = git@github.com:Frizlab/SimpleStream.git

@@ -8,6 +8,8 @@
 
 import Foundation
 
+import SimpleStream
+
 
 
 func usage<TargetStream: TextOutputStream>(progname: String, stream: inout TargetStream) {
@@ -57,10 +59,10 @@ do {
 	/* I hate this (absolute path to /dev/stdin), but SimpleStream does not support FileHandle (yet) */
 	let inputStream = InputStream(fileAtPath: "/dev/stdin")!
 	inputStream.open(); defer {inputStream.close()}
-	let simpleStream = SimpleInputStream(stream: inputStream, bufferSize: 1024, streamReadSizeLimit: nil)
-	while let e = try? simpleStream.readData(upToDelimiters: [expectsNull ? Data([0]) : Data("\n".utf8)], matchingMode: .anyMatchWins, includeDelimiter: false, alwaysCopyBytes: false) {
-		_ = try? simpleStream.readData(size: 1, alwaysCopyBytes: false) /* Read the delimiter */
-		guard let p = String(data: e, encoding: .utf8) else {continue}
+	let simpleStream = SimpleInputStream(stream: inputStream, bufferSize: 1024, bufferSizeIncrement: 512, streamReadSizeLimit: nil)
+	while let e = try? simpleStream.readData(upTo: [expectsNull ? Data([0]) : Data("\n".utf8)], matchingMode: .anyMatchWins, includeDelimiter: false) {
+		_ = try? simpleStream.readData(size: 1) /* Read the delimiter */
+		guard let p = String(data: e.data, encoding: .utf8) else {continue}
 		if !fileURLsSet.contains(URL(fileURLWithPath: p).absoluteURL) {print(p)}
 	}
 } catch let error as CLIError {
