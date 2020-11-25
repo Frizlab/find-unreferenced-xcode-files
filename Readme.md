@@ -1,10 +1,10 @@
-# find_unreferenced_xcode_files
+# find-unreferenced-xcode-files
 A helper to find unreferenced files in an Xcode project.
 
 ## Installation
 You can install the project via Homebrew with:
 ```bash
-brew install frizlab/perso/find_unreferenced_xcode_files
+brew install frizlab/perso/find-unreferenced-xcode-files
 ```
 
 ## Example of Use
@@ -16,5 +16,5 @@ find . \
    -a ! -path "*/.git/*" \
    -a ! -path "*/Carthage/*" \
    -print0 | \
-   find_unreferenced_xcode_files -0 "./$project_name.xcodeproj/project.pbxproj"
+   find-unreferenced-xcode-files -0 "./$project_name.xcodeproj/project.pbxproj"
 ```

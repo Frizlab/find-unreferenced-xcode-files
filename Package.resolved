@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "SimpleStream",
-        "repositoryURL": "git@github.com:Frizlab/SimpleStream.git",
+        "repositoryURL": "https://github.com/Frizlab/SimpleStream.git",
         "state": {
           "branch": null,
           "revision": "2796ec02da0966d179543985e21fe153f0afb461",
