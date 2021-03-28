@@ -63,13 +63,13 @@ do {
 	 * through a pipe or other, both solutions work. */
 	let fileDescriptor = FileDescriptor(rawValue: FileHandle.standardInput.fileDescriptor /* FileDescriptor.standardInput does not exist in 0.0.1 */)
 	let streamReader = FileDescriptorReader(stream: fileDescriptor, bufferSize: 1024, bufferSizeIncrement: 512, readSizeLimit: nil)
-	var e: (data: Data, delimiter: Data)
-	repeat {
-		e = try streamReader.readData(upTo: [expectsNull ? Data([0]) : Data("\n".utf8)], matchingMode: .anyMatchWins, failIfNotFound: false, includeDelimiter: false)
+	while try !streamReader.hasReachedEOF() {
+		let e = try streamReader.readData(upTo: [expectsNull ? Data([0]) : Data("\n".utf8)], matchingMode: .anyMatchWins, failIfNotFound: true, includeDelimiter: false)
 		_ = try streamReader.readData(size: e.delimiter.count) /* Read the delimiter */
+		guard !e.data.isEmpty else {continue}
 		guard let p = String(data: e.data, encoding: .utf8) else {continue}
 		if !fileURLsSet.contains(URL(fileURLWithPath: p).absoluteURL) {print(p)}
-	} while !e.delimiter.isEmpty
+	}
 } catch let error as CLIError {
 	if let msg = error.message {print("error: \(msg)", to: &stderrStream)}
 	if error.showUsage {usage(progname: CommandLine.arguments[0], stream: &stderrStream)}
