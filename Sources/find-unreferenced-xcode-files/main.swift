@@ -8,7 +8,8 @@
 
 import Foundation
 
-import SimpleStream
+import StreamReader
+import SystemPackage
 
 
 
@@ -56,15 +57,19 @@ do {
 		return URL(fileURLWithPath: path).absoluteURL
 	})
 	
-	/* I hate this (absolute path to /dev/stdin), but SimpleStream does not support FileHandle (yet) */
-	let inputStream = InputStream(fileAtPath: "/dev/stdin")!
-	inputStream.open(); defer {inputStream.close()}
-	let simpleStream = SimpleInputStream(stream: inputStream, bufferSize: 1024, bufferSizeIncrement: 512, streamReadSizeLimit: nil)
-	while let e = try? simpleStream.readData(upTo: [expectsNull ? Data([0]) : Data("\n".utf8)], matchingMode: .anyMatchWins, includeDelimiter: false) {
-		_ = try? simpleStream.readData(size: 1) /* Read the delimiter */
+	/* Funnily enough, using a FileHandle stream reader will block when using a
+	 * Terminal and sending the paths manually until ctrl-D has been sent, but w/
+	 * a FileDescriptor stream reader we have no issue. Of course when sending
+	 * through a pipe or other, both solutions work. */
+	let fileDescriptor = FileDescriptor(rawValue: FileHandle.standardInput.fileDescriptor /* FileDescriptor.standardInput does not exist in 0.0.1 */)
+	let streamReader = FileDescriptorReader(stream: fileDescriptor, bufferSize: 1024, bufferSizeIncrement: 512, readSizeLimit: nil)
+	var e: (data: Data, delimiter: Data)
+	repeat {
+		e = try streamReader.readData(upTo: [expectsNull ? Data([0]) : Data("\n".utf8)], matchingMode: .anyMatchWins, failIfNotFound: false, includeDelimiter: false)
+		_ = try streamReader.readData(size: e.delimiter.count) /* Read the delimiter */
 		guard let p = String(data: e.data, encoding: .utf8) else {continue}
 		if !fileURLsSet.contains(URL(fileURLWithPath: p).absoluteURL) {print(p)}
-	}
+	} while !e.delimiter.isEmpty
 } catch let error as CLIError {
 	if let msg = error.message {print("error: \(msg)", to: &stderrStream)}
 	if error.showUsage {usage(progname: CommandLine.arguments[0], stream: &stderrStream)}
