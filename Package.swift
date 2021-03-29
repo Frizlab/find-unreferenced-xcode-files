@@ -8,7 +8,7 @@ let package = Package(
 		.executable(name: "find-unreferenced-xcode-files", targets: ["find-unreferenced-xcode-files"])
 	],
 	dependencies: [
-		.package(url: "https://github.com/Frizlab/stream-reader.git", from: "3.0.0-rc.3")
+		.package(url: "https://github.com/Frizlab/stream-reader.git", from: "3.0.0")
 	],
 	targets: [
 		.target(name: "find-unreferenced-xcode-files", dependencies: [
